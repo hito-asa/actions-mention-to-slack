@@ -6,7 +6,7 @@ import axios from "axios";
 const uniq = <T>(arr: T[]): T[] => [...new Set(arr)];
 
 export const pickupUsername = (text: string): string[] => {
-  const pattern = /\B@[a-z0-9_-]+/gi;
+  const pattern = /\B@[a-z0-9_-]+(\/[a-z0-9_-]+)?/gi;
   const hits = text.match(pattern);
 
   if (hits === null) {

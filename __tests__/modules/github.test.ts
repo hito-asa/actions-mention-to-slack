@@ -19,6 +19,14 @@ describe("modules/github", () => {
       expect(result).toEqual(["jpotts18", "kyle_clegg"]);
     });
 
+    it("should return names if message includes mentions with org-team", () => {
+      const text =
+        "@myorg/jpotts18 what is up man? Are you hanging out with @another_org/kyle_clegg";
+      const result = pickupUsername(text);
+
+      expect(result).toEqual(["myorg/jpotts18", "another_org/kyle_clegg"]);
+    });
+
     it("should return empty if message does not include mention", () => {
       const text = "no mention comment";
       const result = pickupUsername(text);
